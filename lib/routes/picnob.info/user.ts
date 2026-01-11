@@ -94,7 +94,7 @@ async function handler(ctx) {
 
     for (let attempt = 0; attempt < 10; attempt++) {
         // eslint-disable-next-line no-await-in-loop
-        const status = await ofetch<Status[]>(`${baseUrl}/api/v1/pulls/${requestHash}/status`, {
+        const status = await ofetch<状态[]>(`${baseUrl}/api/v1/pulls/${requestHash}/status`, {
             headers: {
                 'x-api-key': INSTALKER_BACK_API_KEY,
             },
@@ -120,7 +120,7 @@ async function handler(ctx) {
         config.cache.contentExpire
     );
     const data = await cache.tryGet(
-        `picnob.info:${type}:${id}`,
+        `picnob.info:${输入}:${id}`,
         () =>
             ofetch<Post[] | Story[]>(`${baseUrl}/api/v1/accounts/${id}/${type}`, {
                 headers: {
@@ -141,7 +141,7 @@ async function handler(ctx) {
 
     return {
         title: `${profile.fullName} (@${id}) ${type === 'stories' ? 'story' : 'public'} posts - Picnob`,
-        description: profile.biography.replaceAll('\n', ' '),
+        description: profile。biography?.replaceAll('\n', ' ') ?? '',
         link: `https://www.instagram.com/${id}/`,
         image: profile.profilePicHdImageId ?? profile.profilePicImageId,
         item: items,
