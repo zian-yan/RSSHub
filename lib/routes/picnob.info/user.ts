@@ -141,7 +141,7 @@ async function handler(ctx) {
 
     return {
         title: `${profile.fullName} (@${id}) ${type === 'stories' ? 'story' : 'public'} posts - Picnob`,
-        description: profile。biography?.replaceAll('\n', ' ') ?? '',
+        description: profile.biography?.replaceAll('\n', ' ') ?? '',
         link: `https://www.instagram.com/${id}/`,
         image: profile.profilePicHdImageId ?? profile.profilePicImageId,
         item: items,
